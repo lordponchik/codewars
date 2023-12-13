@@ -1,19 +1,29 @@
 /*
-8 kyu 373
-For Twins: 1. Types
-Prolog:
-This kata series was created for friends of mine who just started to learn programming. Wish you all the best and keep your mind open and sharp!
+7 kyu 374
+The old switcheroo
+Write a function
 
-Task:
-Write a function that will accept two parameters: variable and type and check if type of variable is matching type. Return true if types match or false if not.
+vowel2index(str)
+that takes in a string and replaces all the vowels [a,e,i,o,u] with their respective positions within that string.
+E.g:
 
-Examples:
-42, "number"   --> true
-"42", "number" --> false
-FUNDAMENTALS
+vowel2index('this is my string') == 'th3s 6s my str15ng'
+vowel2index('Codewars is the best site in the world') == 'C2d4w6rs 10s th15 b18st s23t25 27n th32 w35rld'
+vowel2index('') == ''
+Your function should be case insensitive to the vowels.
+
+STRINGSREGULAR EXPRESSIONSFUNDAMENTALS
 */
-function typeValidation(variable, type) {
-  // Your code should be here ;)
+function vowel2index(str) {
+  //code me
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
 
-  return typeof variable === type;
+  return [...str]
+    .map((el, i) => {
+      if (vowels.includes(el.toLowerCase())) return i + 1;
+      return el;
+    })
+    .join('');
 }
+
+console.log(vowel2index('this is my string')); //'th3s 6s my str15ng'
