@@ -1,5 +1,5 @@
 /*
-7 kyu 374
+7 kyu 373
 The old switcheroo
 Write a function
 
