@@ -1,5 +1,5 @@
 /*
-8 kyu 460
+7 kyu 460
 Changing letters
 When provided with a String, capitalize all vowels
 
