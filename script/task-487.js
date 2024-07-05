@@ -1,5 +1,5 @@
 /*
-8 kyu 486
+8 kyu 487
 Training JS #29: methods of arrayObject---concat() and join()
 This lesson we learn two methods of array: concat() and join(). We have seen concat() in the stringObject method, but the method of the arrayObject is different from the stringObject method, so we need to learn again. When studying the stringObject method split(), we have simply learned the join() method. This time we will review and explain it in detail.
 
