@@ -10,3 +10,5 @@ FUNDAMENTALS
 function getMinMax(arr) {
   return [Math.min(...arr), Math.max(...arr)];
 }
+
+console.log(getMinMax([10, 15, 23, 37, 3, 86])); // [3, 86]
