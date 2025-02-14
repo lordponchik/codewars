@@ -27,6 +27,7 @@ ArraysMathematicsFundamentals
 */
 
 export function isNice(arr: number[]): boolean {
+  if (arr.length === 0) return false;
   return arr.every((el, i, arr) => arr.includes(el - 1) || arr.includes(el + 1)) || false;
 }
 
