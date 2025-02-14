@@ -28,7 +28,7 @@ ArraysMathematicsFundamentals
 
 export function isNice(arr: number[]): boolean {
   if (arr.length === 0) return false;
-  return arr.every((el, i, arr) => arr.includes(el - 1) || arr.includes(el + 1)) || false;
+  return arr.every((el, _i, arr) => arr.includes(el - 1) || arr.includes(el + 1)) || false;
 }
 
 console.log(isNice([2, 10, 9, 3])); // true
