@@ -1,0 +1,15 @@
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/bin/Debug/net9.0/c#
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/bin/Debug/net9.0/c#.deps.json
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/bin/Debug/net9.0/c#.runtimeconfig.json
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/bin/Debug/net9.0/c#.dll
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/bin/Debug/net9.0/c#.pdb
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.GeneratedMSBuildEditorConfig.editorconfig
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.AssemblyInfoInputs.cache
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.AssemblyInfo.cs
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.csproj.CoreCompileInputs.cache
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.sourcelink.json
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.dll
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/refint/c#.dll
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.pdb
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/c#.genruntimeconfig.cache
+/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/Debug/net9.0/ref/c#.dll
