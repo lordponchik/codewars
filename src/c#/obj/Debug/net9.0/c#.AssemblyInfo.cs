@@ -13,10 +13,10 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("c#")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e316f2225891a0636cdde71de3f89a395f66b20")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afc1766521a6235854e8352e4cfd3dcf95700238")]
 [assembly: System.Reflection.AssemblyProductAttribute("c#")]
 [assembly: System.Reflection.AssemblyTitleAttribute("c#")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
-// Создано классом WriteCodeFragment MSBuild.
+// Von der MSBuild WriteCodeFragment-Klasse generiert.
 
