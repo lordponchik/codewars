@@ -40,9 +40,6 @@ namespace Task20
                 else ungeradeSumme += elem;
             }
 
-            System.Console.WriteLine(geradeSumme);
-            System.Console.WriteLine(ungeradeSumme);
-
             return geradeSumme > ungeradeSumme ? "Even is greater than Odd" : geradeSumme < ungeradeSumme ? "Odd is greater than Even" : "Even and Odd are the same";
         }
     }
