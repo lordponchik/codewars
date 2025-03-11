@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            Task18.Task18.Task_18();
+            Task20.Task20.Task_20();
         }
     }
 }
