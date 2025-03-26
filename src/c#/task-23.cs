@@ -1,22 +1,22 @@
 ﻿/*
-8 lvl. Check same case
-Write a function that will check if two given characters are the same case.
+8 lvl. Groß-/Kleinschreibung prüfen
+Schreiben Sie eine Funktion, die prüft, ob zwei gegebene Zeichen die gleiche Groß-/Kleinschreibung haben.
 
-If either of the characters is not a letter, return -1
-If both characters are the same case, return 1
-If both characters are letters, but not the same case, return 0
-Examples
-'a' and 'g' returns 1
+Ist eines der Zeichen kein Buchstabe, wird -1 zurückgegeben.
+Ist beide Zeichen die gleiche Groß-/Kleinschreibung, wird 1 zurückgegeben.
+Ist beide Zeichen Buchstaben, aber nicht die gleiche Groß-/Kleinschreibung, wird 0 zurückgegeben.
+Beispiele:
+'a' und 'g' geben 1 zurück.
 
-'A' and 'C' returns 1
+'A' und 'C' geben 1 zurück.
 
-'b' and 'G' returns 0
+'b' und 'G' geben 0 zurück.
 
-'B' and 'g' returns 0
+'B' und 'g' geben 0 zurück.
 
-'0' and '?' returns -1
+'0' und '?' geben -1 zurück.
 
-Fundamentals
+Grundlagen
 */
 
 using System.Collections.Generic;
