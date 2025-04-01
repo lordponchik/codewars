@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/c#.csproj": {}
+    "C:\\Users\\StrashniukDenys\\Documents\\GitHub\\codewars\\src\\c#\\c#.csproj": {}
   },
   "projects": {
-    "/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/c#.csproj": {
+    "C:\\Users\\StrashniukDenys\\Documents\\GitHub\\codewars\\src\\c#\\c#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/c#.csproj",
+        "projectUniqueName": "C:\\Users\\StrashniukDenys\\Documents\\GitHub\\codewars\\src\\c#\\c#.csproj",
         "projectName": "c#",
-        "projectPath": "/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/c#.csproj",
-        "packagesPath": "/Users/denysstrasniuk/.nuget/packages/",
-        "outputPath": "/Users/denysstrasniuk/Documents/GitHub/codewars/src/c#/obj/",
+        "projectPath": "C:\\Users\\StrashniukDenys\\Documents\\GitHub\\codewars\\src\\c#\\c#.csproj",
+        "packagesPath": "C:\\Users\\StrashniukDenys\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\StrashniukDenys\\Documents\\GitHub\\codewars\\src\\c#\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/denysstrasniuk/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\StrashniukDenys\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
