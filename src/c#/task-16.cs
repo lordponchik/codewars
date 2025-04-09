@@ -1,44 +1,46 @@
 ﻿/*
-7 lvl. Wort in Zeichenfolge multiplizieren
-Sie sollen eine Funktion schreiben, die als ersten Parameter eine Zeichenfolge verwendet. Diese Zeichenfolge ist eine Zeichenfolge aus Wörtern.
+7 lvl. Gerade mal Letzte
+Gibt man eine Folge von Ganzzahlen aus, wird die Summe aller Ganzzahlen mit geradem Index (ungeradem Index in COBOL) multipliziert mit der Ganzzahl am letzten Index zurückgegeben.
 
-Sie sollen dann den zweiten Parameter, der eine Ganzzahl ist, verwenden, um das entsprechende Wort in der angegebenen Zeichenfolge zu finden. Das erste Wort wird durch 0 dargestellt.
+Die Indizes in der Folge beginnen bei 0.
 
-Sobald Sie die gefundene Zeichenfolge haben, multiplizieren Sie schließlich den dritten bereitgestellten Parameter, der ebenfalls eine Ganzzahl ist. Sie müssen zusätzlich zwischen jedem Wort einen Bindestrich einfügen.
-
-Beispiel
-
-modifyMultiply („Dies ist eine Zeichenfolge“, 3, 5)
-ZeichenfolgenAlgorithmenGrundlagenArrays
+Ist die Folge leer, wird 0 zurückgegeben.
 */
 
-using System.Linq;
 using System.Collections.Generic;
 
-namespace Task16
+namespace Task22
 {
-    class Task16
+    class Task22
     {
 
-        public static void Task_16()
+        public static void Task_22()
         {
-            System.Console.WriteLine(ModifyMultiply("is very easy to resolve that kata", 0, 3)); //is-is-is
-            System.Console.WriteLine(ModifyMultiply("Talk is cheap Show me the code", 2, 4)); //cheap-cheap-cheap
+            System.Console.WriteLine(EvenTimesLast([7, 13])); //91
+            System.Console.WriteLine(EvenTimesLast([2, 3, 4, 5])); //30
+            System.Console.WriteLine(EvenTimesLast([2, 3, 4, -1])); //-6
+            System.Console.WriteLine(EvenTimesLast([])); //0
         }
 
 
 
-        public static string ModifyMultiply(string str, int loc, int num)
+        public static int EvenTimesLast(int[] arr)
         {
-            string suchbegriff = str.Split(" ")[loc];
-            List<string> massiv = [];
+            if (arr.Length == 0) return 0;
 
-            for (int i = 0; i < num; i++)
+            int ergebnis = 0;
+
+            for (int i = 0; i < arr.Length; i++)
             {
-                massiv.Add(suchbegriff);
+                if (i % 2 == 0)
+                {
+                    ergebnis += arr[i];
+                }
             }
 
-            return string.Join("-", massiv);
+            ergebnis *= arr[arr.Length - 1];
+
+            return ergebnis;
         }
     }
 }

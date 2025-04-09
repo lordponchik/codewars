@@ -1,104 +1,48 @@
 ﻿/*
-Wassermelone
-Es ist Sommer und sehr warm. Sie befinden sich im Großraum München und sollen ein Programm
-für einen Wassermelonenverkäufer schreiben. Erwartet wird bei allen Eingaben, dass diese
-DAU-sicher sind.
+7 lvl. Find all occurrences of an element in an array
+Alle Vorkommen eines Elements in einem Array finden
+Gegeben sei ein Array (eine Liste in Python) mit Ganzzahlen und eine Ganzzahl n. Alle Vorkommen von n im gegebenen Array finden und ein anderes Array zurückgeben, das alle Indexpositionen von n im gegebenen Array enthält.
 
-1.
-Es sollen die Rechnungen automatisiert werden.
-Sie müssen also den Preis pro Melone und die Anzahl der Bestellmenge eintragen können.
-Am Ende soll der Betrag, den der Kunde zahlen muss, ausgegeben werden.
-Ab einen Bestellwert von mindestens 5 Melonen soll es 5% Rabatt geben.
-Ab 10 Melonen 10%.
-Hinweis: Runden Sie den Betrag auf 2 Nachkommastellen, um korrekt einen Preis zu simulieren. Schauen Sie Sich Math.Round() dazu an.
+Wenn n nicht im gegebenen Array enthalten ist, ein leeres Array zurückgeben [].
 
-2.
-Simulieren Sie eine Quittung: Also Preis, Bestellmenge, Datum, Mehrwertsteuer us.
-Erzeugen Sie ein ansprechendes Ausgabeformat in der Konsole.
+Gehen Sie davon aus, dass n und alle Werte im gegebenen Array immer Ganzzahlen sind.
 
-Viel Erfolg!
+Beispiel:
+
+Kata.FindAll(new int[] {6, 9, 3, 4, 3, 82, 11}, 3) => new int[] {2, 4}
+Grundlagen
 */
 
 
-namespace Task4
+using System.Collections.Generic;
+namespace Task10
 {
-    class Task4
+    class Task10
     {
-        public static void Task_4()
+
+        public static void Task_10()
         {
 
-            double preisProWassermelone, betrag, zurZahlung, mwst, netto, rabatt = 0;
-            int mengeWassermelone;
-            bool checkVariable;
-            string falscheBenutzerAntwort = "Leider verstehe ich Sie nicht. Versuchen Sie nochmal.\n";
-
-
-            Console.Clear();
-            //Abfrage Preis
-            do
-            {
-                Console.Write("Format \"Euro,Cents\". z.B. 2,50\nGeben Sie den Preis pro Wassermelone: ");
-
-                checkVariable = double.TryParse(Console.ReadLine().Replace(".", ","), out preisProWassermelone);
-
-                if (!checkVariable) Console.WriteLine(falscheBenutzerAntwort);
-
-            } while (!checkVariable);
-
-            Console.WriteLine();
-
-            //Abfrage Menge
-            do
-            {
-                Console.Write("Nur Zahlen Bitte.\nGeben Sie die Anzahl der Wassermelone: ");
-
-                checkVariable = int.TryParse(Console.ReadLine(), out mengeWassermelone);
-
-                if (!checkVariable) Console.WriteLine(falscheBenutzerAntwort);
-
-            } while (!checkVariable);
-
-            Console.WriteLine();
-
-            // Betrag
-
-            betrag = preisProWassermelone * mengeWassermelone;
-
-
-            //Rabatt
-
-            if (mengeWassermelone >= 10) rabatt = Math.Round(betrag * 0.1, 2);
-            else if (mengeWassermelone >= 5) rabatt = Math.Round(betrag * 0.05, 2);
-
-            //zur Zahlung, MWST, Netto
-            zurZahlung = betrag - rabatt;
-            netto = Math.Round(zurZahlung / 1.07);
-            mwst = zurZahlung - netto;
-
-
-            // Quittung
-            //40
-            Console.WriteLine();
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"{"       Wassermeloneverkäufer         "}");
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"{"EUR",40}");
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"Wassermelonen {preisProWassermelone,6:F2} x {mengeWassermelone,4} {betrag,12:F2} A");
-            if (rabatt != 0)
-            {
-                int rabattProzent = mengeWassermelone >= 10 ? 10 : 5;
-                Console.WriteLine($"     RABATT {rabattProzent,2}% {-rabatt,24:F2}");
-            }
-            Console.WriteLine("----------------------------------------");
-            Console.WriteLine($"zu zahlen {zurZahlung,30:F2}");
-            Console.WriteLine();
-            Console.WriteLine("MWST%   MWST    +    Netto   =    Brutto");
-            Console.WriteLine($"A  7% {mwst,6:F2}        {netto,6:F2} {zurZahlung,13:F2}");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine($"          {DateTime.Now}");
+            Console.WriteLine(FindAll([6, 9, 3, 4, 3, 82, 11], 3)); // {2, 4}
+            Console.WriteLine(FindAll([6, 9, 3, 4, 3, 82, 11], 0)); // {}
 
         }
+
+        public static int[] FindAll(int[] array, int n)
+        {
+            List<int> newArr = [];
+
+            for (int i = 0; i < array.Length; i += 1)
+            {
+                if (array[i] == n) newArr.Add(i);
+            }
+
+            foreach (var item in newArr)
+            {
+                System.Console.WriteLine(item);
+            }
+            return newArr.ToArray();
+        }
     }
+
 }

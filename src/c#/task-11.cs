@@ -1,59 +1,60 @@
 ﻿/*
-7 lvl. Verantwortungsvoller Alkoholkonsum
-Willkommen in der Codewars Bar!
-Die Codewars Bar empfiehlt, dass Sie pro Standardgetränk 1 Glas Wasser trinken, damit Sie morgen früh keinen Kater haben.
+7 lvl. Initialisiere meinen Namen
+Manche Leute haben nur einen Vornamen, manche Leute haben Vor- und Nachnamen und manche Leute haben Vor-, Mittel- und Nachnamen.
 
-Ihre Programmierkollegen haben Ihnen heute Abend mehrere Getränke in Form einer Zeichenfolge spendiert. Geben Sie eine Zeichenfolge zurück, die vorschlägt, wie viele Gläser Wasser Sie trinken sollten, um keinen Kater zu haben.
+Ihre Aufgabe ist es, die Mittelnamen zu initialisieren (falls es welche gibt).
 
 Beispiele
-„1 Bier“ --> „1 Glas Wasser“
-weil Sie ein Standardgetränk getrunken haben
-
-„1 Shot, 5 Biere, 2 Shots, 1 Glas Wein, 1 Bier“ --> „10 Gläser Wasser“
-weil Sie zehn Standardgetränke getrunken haben
-Hinweis:
-
-Um die Dinge einfach zu halten, betrachten wir jedes „nummerierte Ding“ in der Zeichenfolge als Getränk. Sogar „1 Bär“ -> „1 Glas Wasser“; oder „1 Kettensäge und 2 Pools“ -> „3 Gläser Wasser“...
-
-Grundlagen
+'Jack Ryan' => 'Jack Ryan'
+'Lois Mary Lane' => 'Lois M. Lane'
+'Dimitri' => 'Dimitri'
+'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
+StringsFundamentals
 */
 
-
 using System.Collections.Generic;
-namespace Task11
+
+namespace Task17
 {
-    class Task11
+    class Task17
     {
 
-        public static void Task_11()
+        public static void Task_17()
         {
-
-            Console.WriteLine(hydrate("1 beer")); // "1 glass of water"
-            Console.WriteLine(hydrate("1 shot, 5 beers, 2 shots, 1 glass of wine, 1 beer")); // "10 glasses of water"
-
+            System.Console.WriteLine(InitializeNames("Jack Ryan")); //Jack Ryan
+            System.Console.WriteLine(InitializeNames("Lois Mary Lane")); //Lois M. Lane
+            System.Console.WriteLine(InitializeNames("Dimitri")); //Dimitri
+            System.Console.WriteLine(InitializeNames("Alice Betty Catherine Davis")); //Alice B. C. Davis
         }
 
 
-        public static string hydrate(string drinkString)
+
+        public static string InitializeNames(string name)
         {
-            // Insert party here
+            string[] nameInArr = name.Split(" ");
+            List<string> kurzeName = [];
 
-            string[] str = drinkString.Split(" ");
-            List<int> anzahl = [];
-            int sum;
 
-            foreach (var item in str)
+            if (nameInArr.Length <= 2) return name;
+
+            for (int i = 0; i < nameInArr.Length; i += 1)
             {
-                if (int.TryParse(item, out int res))
+                if (i == 0)
                 {
-                    anzahl.Add(res);
+                    kurzeName.Add(nameInArr[0]);
+                    continue;
                 }
+                if (i == nameInArr.Length - 1)
+                {
+                    kurzeName.Add(nameInArr[nameInArr.Length - 1]);
+                    continue;
+                }
+                kurzeName.Add($"{nameInArr[i].Substring(0, 1)}.");
             }
 
-            sum = anzahl.Sum();
-
-            return sum == 1 ? "1 glass of water" : $"{sum} glasses of water";
+            return string.Join(" ", kurzeName);
         }
     }
-
 }
+
+

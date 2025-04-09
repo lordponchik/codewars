@@ -1,52 +1,48 @@
 ﻿/*
-Eine Brauerei gewährt Kunden
-bei Abnahme von mindestens 10 Kästen 5% Rabatt
-bei Abnahme von mindestens 50 Kästen 7% Rabatt
-bei Abnahme von mindestens 100 Kästen 10% Rabatt
+7 lvl. Anzahl der Vorkommen
+Schreiben Sie eine Funktion, die die Anzahl der Vorkommen eines Elements in einem Array zurückgibt.
 
-Erstellen Sie ein Programm, welches die Eingabe
-der Menge (in Anzahl Kästen) erlaubt und dann den Prozentsatz
-richtig ermittelt und anschließend ausgibt.
+Beispiele
+var sample = { 1, 0, 2, 2, 3 };
+NumberOfOccurrences(0, sample) == 1;
+NumberOfOccurrences(4, sample) == 0;
+NumberOfOccurrences(2, sample) == 2;
+NumberOfOccurrences(3, sample) == 1;
+ArraysFundamentals
 */
 
 
-namespace Program
+namespace Task7
 {
-    class Task1
+    class Task7
     {
-        public static void Task_1()
+
+        public static void Task_7()
         {
-            int anzahlKästen, rabatt = 0;
-            bool checkVariable;
-            string nachricht = "";
 
-            Console.WriteLine("Guten Tag");
+            Console.WriteLine(NumberOfOccurrences(0, [1, 0, 2, 2, 3]));
+            Console.WriteLine(NumberOfOccurrences(4, [1, 0, 2, 2, 3]));
+            Console.WriteLine(NumberOfOccurrences(2, [1, 0, 2, 2, 3]));
+            Console.WriteLine(NumberOfOccurrences(3, [1, 0, 2, 2, 3]));
 
-            do
-            {
-                Console.Write("Schreiben Sie, wie viele Kästen Sie kaufen möchten: ");
-
-                checkVariable = int.TryParse(Console.ReadLine(), out anzahlKästen);
-
-                if (!checkVariable) Console.WriteLine("Leider verstehe ich Sie nicht. Schreiben Sie nur Zahlen bitte.\n");
-                else
-                {
-                    if (anzahlKästen <= 0)
-                    {
-                        Console.WriteLine("Schreiben Sie bitte die Zahl größer als 0.\n");
-                        checkVariable = false;
-                    }
-                }
-
-            } while (!checkVariable);
-
-            if (anzahlKästen >= 100) rabatt = 10;
-            else if (anzahlKästen >= 50) rabatt = 7;
-            else if (anzahlKästen >= 10) rabatt = 5;
-
-            nachricht = rabatt == 0 ? $"Beim Kauf von {anzahlKästen} Kartons gibt es leider keinen Rabatt." :
-             $"Beim Kauf von {anzahlKästen} Kästen erhalten Sie {rabatt}% Rabatt";
-            Console.WriteLine(nachricht);
         }
+
+
+
+
+
+        public static int NumberOfOccurrences(int x, int[] xs)
+        {
+            int anzahl = 0;
+
+            foreach (int el in xs)
+            {
+                if (el == x) anzahl += 1;
+            }
+
+            return anzahl;
+        }
+
+
     }
 }

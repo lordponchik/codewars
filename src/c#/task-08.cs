@@ -1,54 +1,78 @@
 ﻿/*
-7 lvl. Wie viele aufeinanderfolgende Zahlen werden benötigt?
-Schreiben Sie eine Funktion, die ein Array eindeutiger Ganzzahlen verwendet und die Mindestanzahl an Ganzzahlen zurückgibt, die erforderlich ist, um die Werte des Arrays von der niedrigsten bis zur höchsten Zahl aufeinander folgen zu lassen.
+7 lvl. Skalieren von quadrierten Zeichenfolgen
+Sie erhalten eine Zeichenfolge mit n Zeilen, wobei jede Teilzeichenfolge n Zeichen lang ist. Beispiel:
 
-Beispiel
-[4, 8, 6] --> 2
-Weil 5 und 7 addiert werden müssen, um [4, 5, 6, 7, 8] zu erhalten
+s = "abcd\nefgh\nijkl\nmnop"
 
-[-1, -5] --> 3
-Weil -2, -3, -4 addiert werden müssen, um [-5, -4, -3, -2, -1] zu erhalten
+Wir werden die "horizontale" und die "vertikale" Skalierung dieses Zeichenfolgenquadrats untersuchen.
 
-[1] --> 0
-[] --> 0
-ArraysFundamentals
+Eine k-horizontale Skalierung einer Zeichenfolge besteht aus der k-fachen Replikation jedes Zeichens der Zeichenfolge (außer '\n').
+
+Beispiel: 2-horizontale Skalierung von s: => "aabbccdd\neeffgghh\niijjkkll\nmmnnoopp"
+Eine v-vertikale Skalierung einer Zeichenfolge besteht aus der v-fachen Replikation jedes Teils der quadrierten Zeichenfolge.
+
+Beispiel: 2-vertikale Skalierung von s: => "abcd\nabcd\nefgh\nefgh\nijkl\nijkl\nmnop\nmnop"
+Die Funktion scale(strng, k, v) führt eine k-horizontale Skalierung und eine v-vertikale Skalierung durch.
+
+Beispiel: a = "abcd\nefgh\nijkl\nmnop"
+scale(a, 2, 3) --> "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
+Gedruckt:
+
+abcd\nefgh\nijkl\nmnop -----> aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp
+Aufgabe:
+Schreiben Sie die Funktion scale(strng, k, v), k und v sind positive ganze Zahlen. Wenn strng == "" return "".
+GrundlagenStrings
 */
 
 
-namespace Task8
+using System.Linq;
+namespace Task14
 {
-    class Task8
+    class Task14
     {
 
-        public static void Task_8()
+        public static void Task_14()
         {
-
-            Console.WriteLine(Consecutive([4, 8, 6])); // 2
-            Console.WriteLine(Consecutive([-1, -5])); // 3
-            Console.WriteLine(Consecutive([1])); // 0
-            Console.WriteLine(Consecutive([])); // 0
-
+            // Console.WriteLine(Scale("abcd\nefgh\nijkl\nmnop", 2, 3)); // aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp
+            System.Console.WriteLine("");
         }
 
-        public static int Consecutive(int[] arr)
+
+        public static string Scale(string strng, int k, int n)
         {
-            if (arr.Length == 0 || arr.Length == 1) return 0;
+            if (strng.Length == 0) return "";
 
-            int[] newArr = (int[])arr.Clone();
-            Array.Sort(newArr);
-
-            int minZahl = newArr[0];
-            int maxZahl = newArr[newArr.Length - 1];
-
-            List<int> res = [];
-
-            for (int i = minZahl; i <= maxZahl; i += 1)
+            string[] arr = strng.Split("\n");
+            for (int item = 0; item < arr.Length; item++)
             {
-                res.Add(i);
+                string str = "";
+
+                for (int i = 0; i < arr[item].Length; i++)
+                {
+
+                    for (int j = 0; j < k; j++)
+                    {
+                        str += arr[item][i];
+                    }
+
+                }
+                arr[item] = str;
+
             }
 
+            List<string> neuArr = [];
 
-            return res.Count - newArr.Length;
+            foreach (var item in arr)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    neuArr.Add(item);
+                }
+            }
+
+            return string.Join("\n", neuArr);
         }
     }
 }
+
+

@@ -1,58 +1,46 @@
 ﻿/*
-7 lvl. Initialisiere meinen Namen
-Manche Leute haben nur einen Vornamen, manche Leute haben Vor- und Nachnamen und manche Leute haben Vor-, Mittel- und Nachnamen.
+8 lvl. Groß-/Kleinschreibung prüfen
+Schreiben Sie eine Funktion, die prüft, ob zwei gegebene Zeichen die gleiche Groß-/Kleinschreibung haben.
 
-Ihre Aufgabe ist es, die Mittelnamen zu initialisieren (falls es welche gibt).
+Ist eines der Zeichen kein Buchstabe, wird -1 zurückgegeben.
+Ist beide Zeichen die gleiche Groß-/Kleinschreibung, wird 1 zurückgegeben.
+Ist beide Zeichen Buchstaben, aber nicht die gleiche Groß-/Kleinschreibung, wird 0 zurückgegeben.
+Beispiele:
+'a' und 'g' geben 1 zurück.
 
-Beispiele
-'Jack Ryan' => 'Jack Ryan'
-'Lois Mary Lane' => 'Lois M. Lane'
-'Dimitri' => 'Dimitri'
-'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
-StringsFundamentals
+'A' und 'C' geben 1 zurück.
+
+'b' und 'G' geben 0 zurück.
+
+'B' und 'g' geben 0 zurück.
+
+'0' und '?' geben -1 zurück.
+
+Grundlagen
 */
 
 using System.Collections.Generic;
 
-namespace Task17
+namespace Task23
 {
-    class Task17
+    class Task23
     {
 
-        public static void Task_17()
+        public static void Task_23()
         {
-            System.Console.WriteLine(InitializeNames("Jack Ryan")); //Jack Ryan
-            System.Console.WriteLine(InitializeNames("Lois Mary Lane")); //Lois M. Lane
-            System.Console.WriteLine(InitializeNames("Dimitri")); //Dimitri
-            System.Console.WriteLine(InitializeNames("Alice Betty Catherine Davis")); //Alice B. C. Davis
+            System.Console.WriteLine(SameCase('a', 'c')); //1
+            System.Console.WriteLine(SameCase('A', 'R')); //1
+            System.Console.WriteLine(SameCase('a', 'C')); //0
+            System.Console.WriteLine(SameCase('0', '?')); //-1
         }
 
 
 
-        public static string InitializeNames(string name)
+        public static int SameCase(char a, char b)
         {
-            string[] nameInArr = name.Split(" ");
-            List<string> kurzeName = [];
-
-
-            if (nameInArr.Length <= 2) return name;
-
-            for (int i = 0; i < nameInArr.Length; i += 1)
-            {
-                if (i == 0)
-                {
-                    kurzeName.Add(nameInArr[0]);
-                    continue;
-                }
-                if (i == nameInArr.Length - 1)
-                {
-                    kurzeName.Add(nameInArr[nameInArr.Length - 1]);
-                    continue;
-                }
-                kurzeName.Add($"{nameInArr[i].Substring(0, 1)}.");
-            }
-
-            return string.Join(" ", kurzeName);
+            if (!char.IsLetter(a) || !char.IsLetter(b)) return -1;
+            else if (char.IsLower(a) && char.IsLower(b) || char.IsUpper(a) && char.IsUpper(b)) return 1;
+            else return 0;
         }
     }
 }

@@ -1,76 +1,59 @@
 ﻿/*
-Zahlen in Worten
+7 lvl. Verantwortungsvoller Alkoholkonsum
+Willkommen in der Codewars Bar!
+Die Codewars Bar empfiehlt, dass Sie pro Standardgetränk 1 Glas Wasser trinken, damit Sie morgen früh keinen Kater haben.
 
-Der Anwender soll eine beliebige Zahl zwischen 1-999 eingeben.
-Diese Zahl soll dann als String ausgegeben werden.
+Ihre Programmierkollegen haben Ihnen heute Abend mehrere Getränke in Form einer Zeichenfolge spendiert. Geben Sie eine Zeichenfolge zurück, die vorschlägt, wie viele Gläser Wasser Sie trinken sollten, um keinen Kater zu haben.
 
-Ein Beispiel:
-Eingabe: 128
-Ausgabe: einhundertachtundzwanzig
+Beispiele
+„1 Bier“ --> „1 Glas Wasser“
+weil Sie ein Standardgetränk getrunken haben
 
-Viel Efolg :)
+„1 Shot, 5 Biere, 2 Shots, 1 Glas Wein, 1 Bier“ --> „10 Gläser Wasser“
+weil Sie zehn Standardgetränke getrunken haben
+Hinweis:
+
+Um die Dinge einfach zu halten, betrachten wir jedes „nummerierte Ding“ in der Zeichenfolge als Getränk. Sogar „1 Bär“ -> „1 Glas Wasser“; oder „1 Kettensäge und 2 Pools“ -> „3 Gläser Wasser“...
+
+Grundlagen
 */
 
 
-namespace Task5
+using System.Collections.Generic;
+namespace Task11
 {
-    class Task5
+    class Task11
     {
-        public static void Task_5()
+
+        public static void Task_11()
         {
-            string[] einhiten = { "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun" };
-            string[] zahlenZweitenZehn = { "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn" };
-            string[] zehner = { "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig" };
 
-            int zahl;
-            string zahlInStr = "", zehnerStr = "";
-            bool checkVariable;
-
-            do
-            {
-                Console.Write("Nur Zahlen bitte.\nSchreiben Sie eine Zahl zwischen 1 und 999, damit ich sie in eine Zeichenfolge umwandeln kann: ");
-
-                checkVariable = int.TryParse(Console.ReadLine(), out zahl);
-
-                if (!checkVariable) Console.WriteLine("Leider versteh ich nicht. Versuchen Sie nochmal\n");
-                else
-                {
-                    if (zahl < 1 || zahl > 999)
-                    {
-                        checkVariable = false;
-                        Console.WriteLine("Zahl soll zwischen 1 und 999 sein\n");
-                    }
-                }
-            } while (!checkVariable);
-
-            if (zahl >= 100)
-            {
-                zahlInStr += einhiten[(int)Math.Truncate((double)zahl / 100) - 1] + "hundert";
-                zahl %= 100;
-            }
-
-            if (zahl >= 20)
-            {
-
-                zehnerStr = zehner[(int)Math.Truncate((double)zahl / 10) - 2];
-                Console.WriteLine((int)Math.Truncate((double)zahl / 10));
-                zahl %= 10;
-            }
-            else if (zahl >= 10)
-            {
-                zahlInStr += zahlenZweitenZehn[zahl % 10];
-                zahl = 0;
-            }
-
-            if (zahl > 0)
-            {
-                zahlInStr += zahl == 1 && zahlInStr.Length == 0 || zehnerStr.Length == 0 ? einhiten[zahl - 1] + "s" : einhiten[zahl - 1];
-                if (zehnerStr.Length > 0) zahlInStr += "und" + zehnerStr;
-            }
-
-
-            System.Console.WriteLine(zahlInStr);
+            Console.WriteLine(hydrate("1 beer")); // "1 glass of water"
+            Console.WriteLine(hydrate("1 shot, 5 beers, 2 shots, 1 glass of wine, 1 beer")); // "10 glasses of water"
 
         }
+
+
+        public static string hydrate(string drinkString)
+        {
+            // Insert party here
+
+            string[] str = drinkString.Split(" ");
+            List<int> anzahl = [];
+            int sum;
+
+            foreach (var item in str)
+            {
+                if (int.TryParse(item, out int res))
+                {
+                    anzahl.Add(res);
+                }
+            }
+
+            sum = anzahl.Sum();
+
+            return sum == 1 ? "1 glass of water" : $"{sum} glasses of water";
+        }
     }
+
 }

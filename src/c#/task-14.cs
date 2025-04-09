@@ -1,76 +1,46 @@
 ﻿/*
-7 lvl. Skalieren von quadrierten Zeichenfolgen
-Sie erhalten eine Zeichenfolge mit n Zeilen, wobei jede Teilzeichenfolge n Zeichen lang ist. Beispiel:
+7 lvl. Gerade oder Ungerade – was ist größer?
+Bestätigen Sie anhand einer Ziffernfolge, ob die Summe aller einzelnen geraden Ziffern größer ist als die Summe aller einzelnen ungeraden Ziffern. Es wird immer eine Zahlenfolge ausgegeben.
 
-s = "abcd\nefgh\nijkl\nmnop"
+Wenn die Summe der geraden Zahlen größer ist als die der ungeraden Zahlen, geben Sie zurück: „Gerade ist größer als Ungerade“
 
-Wir werden die "horizontale" und die "vertikale" Skalierung dieses Zeichenfolgenquadrats untersuchen.
+Wenn die Summe der ungeraden Zahlen größer ist als die Summe der geraden Zahlen, geben Sie zurück: „Ungerade ist größer als Gerade“
 
-Eine k-horizontale Skalierung einer Zeichenfolge besteht aus der k-fachen Replikation jedes Zeichens der Zeichenfolge (außer '\n').
+Wenn die Summe der geraden und ungeraden Zahlen identisch ist, geben Sie zurück: „Gerade und Ungerade sind gleich“
 
-Beispiel: 2-horizontale Skalierung von s: => "aabbccdd\neeffgghh\niijjkkll\nmmnnoopp"
-Eine v-vertikale Skalierung einer Zeichenfolge besteht aus der v-fachen Replikation jedes Teils der quadrierten Zeichenfolge.
-
-Beispiel: 2-vertikale Skalierung von s: => "abcd\nabcd\nefgh\nefgh\nijkl\nijkl\nmnop\nmnop"
-Die Funktion scale(strng, k, v) führt eine k-horizontale Skalierung und eine v-vertikale Skalierung durch.
-
-Beispiel: a = "abcd\nefgh\nijkl\nmnop"
-scale(a, 2, 3) --> "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
-Gedruckt:
-
-abcd\nefgh\nijkl\nmnop -----> aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp
-Aufgabe:
-Schreiben Sie die Funktion scale(strng, k, v), k und v sind positive ganze Zahlen. Wenn strng == "" return "".
-GrundlagenStrings
+Grundlagen
 */
 
+using System.Collections.Generic;
 
-using System.Linq;
-namespace Task14
+namespace Task20
 {
-    class Task14
+    class Task20
     {
 
-        public static void Task_14()
+        public static void Task_20()
         {
-            // Console.WriteLine(Scale("abcd\nefgh\nijkl\nmnop", 2, 3)); // aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp
-            System.Console.WriteLine("");
+            System.Console.WriteLine(EvenOrOdd("123")); //"Odd is greater than Even"
+            System.Console.WriteLine(EvenOrOdd("12")); //"Even is greater than Odd"
+            System.Console.WriteLine(EvenOrOdd("112")); //"Even and Odd are the same"
         }
 
 
-        public static string Scale(string strng, int k, int n)
+
+        public static string EvenOrOdd(string str)
         {
-            if (strng.Length == 0) return "";
+            int geradeSumme = 0;
+            int ungeradeSumme = 0;
 
-            string[] arr = strng.Split("\n");
-            for (int item = 0; item < arr.Length; item++)
+            for (int i = 0; i < str.Length; i += 1)
             {
-                string str = "";
+                int elem = int.Parse(str[i].ToString());
 
-                for (int i = 0; i < arr[item].Length; i++)
-                {
-
-                    for (int j = 0; j < k; j++)
-                    {
-                        str += arr[item][i];
-                    }
-
-                }
-                arr[item] = str;
-
+                if (elem % 2 == 0) geradeSumme += elem;
+                else ungeradeSumme += elem;
             }
 
-            List<string> neuArr = [];
-
-            foreach (var item in arr)
-            {
-                for (int i = 0; i < n; i++)
-                {
-                    neuArr.Add(item);
-                }
-            }
-
-            return string.Join("\n", neuArr);
+            return geradeSumme > ungeradeSumme ? "Even is greater than Odd" : geradeSumme < ungeradeSumme ? "Odd is greater than Even" : "Even and Odd are the same";
         }
     }
 }

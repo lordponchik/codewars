@@ -1,33 +1,58 @@
 ﻿/*
-7 lvl. Berechnen Sie das individuelle Alter zweier Personen
-Erstellen Sie eine Funktion, die die Summe und Altersdifferenz zweier Personen berücksichtigt, ihr individuelles Alter berechnet und ein Wertepaar zurückgibt (ältestes Alter zuerst), wenn diese vorhanden sind, oder null/Keine oder {-1, -1} in C, wenn:
+7 lvl. Hells Kitchen
+Gordon Ramsay schreit. Er schreit und flucht. Vielleicht stimmt etwas nicht mit ihm.
 
-Summe < 0
-Differenz < 0
-Eines der berechneten Alter ist negativ
-GrundlagenAlgorithmenArrays
+Du erhältst eine Reihe von vier Wörtern. Deine Aufgabe ist es, sie in die Sprache Gordons zu übersetzen.
+
+Regeln:
+
+Natürlich sollten die Wörter großgeschrieben werden. Jedes Wort endet mit „!!!!“. Jeder Buchstabe „a“ oder „A“ wird zu „@“, jeder andere Vokal zu „*“.
+
+Grundlagen: Strings & Arrays
 */
 
+using System.Collections.Generic;
 
-namespace Task15
+namespace Task21
 {
-    class Task15
+    class Task21
     {
 
-        public static void Task_15()
+        public static void Task_21()
         {
-            System.Console.WriteLine(GetAges(24, 4)); //14, 10
-            System.Console.WriteLine(GetAges(63, 14)); //38,5 24,5
-            System.Console.WriteLine(GetAges(63, -14)); //null;
+            System.Console.WriteLine(Gordon("What feck damn cake")); //"WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!"
+            System.Console.WriteLine(Gordon("are you stu pid")); //"@R*!!!! Y**!!!! ST*!!!! P*D!!!!"
+            System.Console.WriteLine(Gordon("i am a chef")); //"*!!!! @M!!!! @!!!! CH*F!!!!"
         }
 
 
-        public static double[] GetAges(int sum, int difference)
-        {
-            double alter1 = (double)(sum + difference) / 2;
-            double alter2 = (double)(sum - difference) / 2;
 
-            return sum < 0 || difference < 0 || alter1 < 0 || alter2 < 0 ? null : alter1 > alter2 ? [alter1, alter2] : [alter2, alter1];
+        public static string Gordon(string a)
+        {
+            char[] vokale = ['A', 'E', 'I', 'O', 'U'];
+            string[] arr = a.Split(" ");
+
+            for (int i = 0; i < arr.Length; i += 1)
+            {
+                arr[i] = string.Concat(arr[i].Select((el) =>
+                {
+                    el = char.ToUpper(el);
+
+                    if (Array.Exists(vokale, v => v == el))
+                    {
+                        if (el == 'A') return '@';
+
+                        return '*';
+                    }
+
+                    return el;
+                }));
+
+                arr[i] += "!!!!";
+            }
+
+
+            return string.Join(" ", arr);
         }
     }
 }

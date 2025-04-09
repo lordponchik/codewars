@@ -1,110 +1,79 @@
 ﻿/*
-Für die Bestimmung des Urlaubsanspruchs des Antragsstellers ist ein Programm zu erstellen. 
-Grundlage für die Berechnung des Urlaubsanspruchs bildet die Betriebsvereinbarung (siehe Anlage). 
-Erstellen Sie aufgrund der Betriebsvereinbarung ein Programm, welches die richtige Höhe des 
-Urlaubsanspruchs berechnet.  
-  
-Anlage Betriebsvereinbarung: 
-Allen Beschäftigten stehen 26 Tage Urlaub zu.  
-Minderjährige Beschäftigte erhalten 30 Tage Urlaub. 
-Beschäftigte, die älter als 55 Jahre sind, erhalten 28 Tage Urlaub. 
-Beschäftigte mit einer Behinderung ab 50 % erhalten zusätzlich 5 weitere Tage Urlaub. 
-Beschäftigte mit einer Betriebszugehörigkeit von mehr als 10 Jahren erhalten 2 zusätzliche Tage Urlaub.
+7 lvl. Briefkasten-Maltrupp
+Quelle: imgur.com
+Geschichte
+Sie und eine Gruppe von Freunden verdienen in den Schulferien etwas zusätzliches Geld, indem Sie gegen eine geringe Gebühr die Nummern auf den Briefkästen anderer Leute neu bemalen.
+
+Da Sie zu zehnt in der Gruppe sind, konzentriert sich jeder auf das Bemalen einer Ziffer! Zum Beispiel malt jemand nur die 1er, jemand anderes nur die 2er und so weiter...
+
+Aber am Ende des Tages stellen Sie fest, dass nicht jeder gleich viel Arbeit geleistet hat.
+
+Um Streit zu vermeiden, müssen Sie das Geld gerecht verteilen. Und hier kommt diese Kata ins Spiel.
+
+Kata-Aufgabe
+Schreiben Sie anhand der Start- und Endnummern der Briefkästen eine Methode, um die Häufigkeit aller 10 bemalten Ziffern zurückzugeben.
+
+Beispiel
+Für Start = 125 und Ende = 132
+
+Die Buchstabenfelder sind
+
+125 = 1, 2, 5
+126 = 1, 2, 6
+127 = 1, 2, 7
+128 = 1, 2, 8
+129 = 1, 2, 9
+130 = 1, 3, 0
+131 = 1, 3, 1
+132 = 1, 3, 2
+Die Ziffernhäufigkeiten sind:
+
+0 wird 1 Mal gemalt
+1 wird 9 Mal gemalt
+2 wird 6 Mal gemalt
+usw.
+und daher würde die Methode [1,9,6,3,0,1,1,1,1,1] zurückgeben
+
+Hinweise
+0 < Start <= Ende
+In C wird der zurückgegebene Wert freigegeben.
+Grundlagen
 */
 
+using System.Linq;
 
-namespace Task3
+namespace Task9
 {
-    class Task3
+    class Task9
     {
-        public static void Task_3()
+
+        public static void Task_9()
         {
-            int urlaubsTage = 26, betriebszugehörigkeit, behinderungProzent, alter;
-            bool checkVariable, hatBehinderung;
-            string name, jeinBenutzerAntwort, falscheBenutzerAntwort = "Leider verstehe ich Sie nicht. Vesuchen Sie nochmal bitte.\n";
 
-            Console.Clear();
-            // Abfrage Name.
-            Console.Write("Schreiben Sie bitte Ihren Namen bitte: ");
-            name = Console.ReadLine() ?? "User";
-            Console.WriteLine($"Guten Tag, {name}");
-            Console.WriteLine();
-
-            // Abfrage Alter
-            do
-            {
-                Console.Write("Schreiben Sie Ihr Alter. Nur Zahlen bitte: ");
-                checkVariable = int.TryParse(Console.ReadLine(), out alter);
-
-                if (!checkVariable) Console.WriteLine(falscheBenutzerAntwort);
-                else if (alter <= 0)
-                {
-                    Console.WriteLine("Das ist unmöglich. Schreiben Sie bitte die Zahl größer als 0.\n");
-                    checkVariable = false;
-                }
-                else
-                {
-                    // Überprüfung Urlaubstage for Alter
-                    if (alter < 18) urlaubsTage = 30;
-                    else if (alter > 55) urlaubsTage = 28;
-                }
-            } while (!checkVariable);
-
-            Console.WriteLine();
-
-            // Abfrage HatBehinderung
-            do
-            {
-                Console.Write("Haben Sie eine Behindreung? Schreiben Sie einfach ja oder nein: ");
-                jeinBenutzerAntwort = Console.ReadLine().ToLower();
-
-                switch (jeinBenutzerAntwort)
-                {
-                    case "ja":
-                        hatBehinderung = true;
-                        //Abfrage wie Hoch Behinderung
-                        do
-                        {
-                            Console.Write("\nSchreiben Sie, wie hoch Ihre Behinderung ist. Nur Zahlen bitte: ");
-                            checkVariable = int.TryParse(Console.ReadLine(), out behinderungProzent);
-
-                            if (!checkVariable) Console.WriteLine(falscheBenutzerAntwort);
-                            else
-                            {
-                                if (behinderungProzent >= 50 && behinderungProzent <= 100) urlaubsTage += 5;
-                            }
-                        } while (!checkVariable);
-                        break;
-                    case "nein":
-                        hatBehinderung = false;
-                        break;
-                    default:
-                        Console.WriteLine(falscheBenutzerAntwort);
-                        break;
-                }
-
-            } while (jeinBenutzerAntwort != "ja" && jeinBenutzerAntwort != "nein");
-
-            Console.WriteLine();
-
-            //Abfrage Berufserfahrung
-            do
-            {
-                Console.Write("Schreiben Sie, wie viele Jahre Berufserfahrung haben Sie. Nur Zahlen bitte: ");
-                checkVariable = int.TryParse(Console.ReadLine(), out betriebszugehörigkeit);
-
-                if (!checkVariable) Console.WriteLine(falscheBenutzerAntwort);
-                else
-                {
-                    if (betriebszugehörigkeit >= 10) urlaubsTage += 2;
-                }
-            } while (!checkVariable);
-
-            Console.WriteLine();
-
-            // Ergebnis
-            Console.WriteLine($"Glückwunsch. Ihr Urlaub beträgt {urlaubsTage} Tage. Ich wünsche Ihnen eine gute Erholung.");
+            Console.WriteLine(PaintLetterBoxes(125, 132)); // {1,9,6,3,0,1,1,1,1,1}
 
         }
+
+        public static IEnumerable<int> PaintLetterBoxes(int start, int end)
+        {
+            int[] arbeitsAufwandar = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            List<int> arrInt = [];
+
+
+            for (int i = start; i <= end; i += 1)
+            {
+                arrInt.Add(i);
+            }
+
+            arrInt = string.Join("", arrInt).Select(el => int.Parse(el.ToString())).ToList();
+
+            foreach (int item in arrInt)
+            {
+                arbeitsAufwandar[item] += 1;
+            }
+
+            return arbeitsAufwandar;
+        }
     }
+
 }

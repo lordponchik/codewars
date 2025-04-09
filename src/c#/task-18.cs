@@ -1,44 +1,84 @@
 ﻿/*
-7 lvl. Seltsamer als der Rest
-Erstellen Sie eine Methode, die ein Array/eine Liste als Eingabe verwendet und den Index ausgibt, an dem sich die einzige ungerade Zahl befindet.
+7 lvl. Punktrechner
+Punktrechner
+Sie müssen einen Rechner schreiben, der Zeichenketten als Eingabe empfängt. Die Punkte stellen die Zahl in der Gleichung dar. Auf der einen Seite stehen Punkte, auf der anderen Seite ein Operator und nach dem Operator wieder Punkte. Punkte und Operator sind durch ein Leerzeichen getrennt.
 
-Diese Methode sollte mit Arrays mit negativen Zahlen funktionieren. Wenn das Array keine ungeraden Zahlen enthält, sollte die Methode -1 ausgeben.
+Die folgenden Operatoren sind gültig:
 
-Beispiele:
++ Addition
+- Subtraktion
+* Multiplikation
+// Ganzzahldivision
+Ihre Aufgabe
+Sie müssen eine Zeichenkette mit so vielen Punkten zurückgeben, wie die Gleichung zurückgibt. Ist das Ergebnis 0, geben Sie die leere Zeichenkette zurück. Bei einer Subtraktion ist die erste Zahl immer größer oder gleich der zweiten Zahl.
 
-Kata.OddOne(new List<int> {2,4,6,7,10}) => 3
-Kata.OddOne(new List<int> {2,16,98,10,13,78}) => 4
-Kata.OddOne(new List<int> {4,-8,98,-12,-7,90,100}) => 4
-Kata.OddOne(new List<int> {2,4,6,8}) => -1
-Grundlagen
+Beispiele (Eingabe => Ausgabe)
+* "..... + ..............." => "......"
+* "..... - ..." => ".."
+* "..... - ." => "...."
+* "..... * ..." => "................."
+* "..... * .." => ".........."
+* "..... // .." => ".."
+* "..... // ." => "..."
+* ". // .." => ""
+* ".. - .." => ""
+StringsFundamentals
 */
 
-using System.Collections.Generic;
+using System;
 
-namespace Task18
+namespace Task24
 {
-    class Task18
+    class Task24
     {
 
-        public static void Task_18()
+        public static void Task_24()
         {
-            System.Console.WriteLine(OddOne([2, 4, 6, 7, 10])); //3
-            System.Console.WriteLine(OddOne([2, 16, 98, 10, 13, 78])); //4
-            System.Console.WriteLine(OddOne([4, -8, 98, -12, -7, 90, 100])); //4
-            System.Console.WriteLine(OddOne([2, 4, 6, 8])); //-1
+            System.Console.WriteLine(Calculator("..... + ...............")); //"...................."
+            System.Console.WriteLine(Calculator("..... - ...")); //".."
+            System.Console.WriteLine(Calculator("..... - .")); //"...."
+            System.Console.WriteLine(Calculator("..... * ...")); //"..............."
+            System.Console.WriteLine(Calculator("..... // ..")); //".."
+            System.Console.WriteLine(Calculator(". // ..")); //""
+            System.Console.WriteLine(Calculator(".. - ..")); //"" 
         }
 
 
 
-        public static int OddOne(List<int> list)
+        public static string Calculator(string txt)
         {
-            for (int i = 0; i < list.Count; i += 1)
+            string[] arr = txt.Split(" ");
+            int operand_1 = arr[0].Length;
+            int operand_2 = arr[2].Length;
+            string operator_1 = arr[1];
+            int ergebnis = 0;
+            string ergebnisInPunkte = "";
+
+            switch (operator_1)
             {
-                if (list[i] % 2 == 0) continue;
-                return i;
+                case "+":
+                    ergebnis = operand_1 + operand_2;
+                    break;
+                case "-":
+                    ergebnis = operand_1 - operand_2;
+                    break;
+                case "*":
+                    ergebnis = operand_1 * operand_2;
+                    break;
+                case "//":
+                    ergebnis = operand_1 / operand_2;
+                    break;
+                default:
+                    Console.WriteLine("Fehler");
+                    break;
             }
 
-            return -1;
+            for (int i = 1; i <= ergebnis; i += 1)
+            {
+                ergebnisInPunkte += ".";
+            }
+
+            return ergebnisInPunkte;
         }
     }
 }

@@ -1,47 +1,40 @@
 ﻿/*
-7 lvl. Gerade oder Ungerade – was ist größer?
-Bestätigen Sie anhand einer Ziffernfolge, ob die Summe aller einzelnen geraden Ziffern größer ist als die Summe aller einzelnen ungeraden Ziffern. Es wird immer eine Zahlenfolge ausgegeben.
+7 lvl. Geisterjäger (Leerzeichen entfernen)
+Oh nein! Geister sollen die Stadt überschwemmt haben. Eure Aufgabe ist es, sie zu vertreiben und die Lage zu retten!
 
-Wenn die Summe der geraden Zahlen größer ist als die der ungeraden Zahlen, geben Sie zurück: „Gerade ist größer als Ungerade“
+In diesem Kata repräsentieren Strings Gebäude, während Leerzeichen darin Geister darstellen.
 
-Wenn die Summe der ungeraden Zahlen größer ist als die Summe der geraden Zahlen, geben Sie zurück: „Ungerade ist größer als Gerade“
+Worauf wartet ihr also noch? Gibt das Gebäude (String) ohne Geister (Leerzeichen) zurück!
 
-Wenn die Summe der geraden und ungeraden Zahlen identisch ist, geben Sie zurück: „Gerade und Ungerade sind gleich“
+Beispiel:
 
-Grundlagen
+"Sky scra per" -> "Skyscraper"
+Wenn das Gebäude keine Geister enthält, gibt ihr den String zurück:
+
+"Du wolltest doch nur mein Autogramm, oder?"
+Grundlagen Reguläre Ausdrücke Strings
 */
 
+using System;
 using System.Collections.Generic;
 
-namespace Task20
+namespace Task26
 {
-    class Task20
+    class Task26
     {
 
-        public static void Task_20()
+        public static void Task_26()
         {
-            System.Console.WriteLine(EvenOrOdd("123")); //"Odd is greater than Even"
-            System.Console.WriteLine(EvenOrOdd("12")); //"Even is greater than Odd"
-            System.Console.WriteLine(EvenOrOdd("112")); //"Even and Odd are the same"
+            System.Console.WriteLine(GhostBusters("Sky scra per")); //"Skyscraper" 
+            System.Console.WriteLine(GhostBusters("BusStation")); //"You just wanted my autograph didn't you?"
         }
 
 
-
-        public static string EvenOrOdd(string str)
+        public static string GhostBusters(string building)
         {
-            int geradeSumme = 0;
-            int ungeradeSumme = 0;
-
-            for (int i = 0; i < str.Length; i += 1)
-            {
-                int elem = int.Parse(str[i].ToString());
-
-                if (elem % 2 == 0) geradeSumme += elem;
-                else ungeradeSumme += elem;
-            }
-
-            return geradeSumme > ungeradeSumme ? "Even is greater than Odd" : geradeSumme < ungeradeSumme ? "Odd is greater than Even" : "Even and Odd are the same";
+            return building.IndexOf(" ") == -1 ? "You just wanted my autograph didn't you?" : building.Replace(" ", "");
         }
+
     }
 }
 

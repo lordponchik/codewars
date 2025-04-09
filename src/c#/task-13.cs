@@ -1,32 +1,35 @@
 ﻿/*
-7 lvl. Regexp-Grundlagen – ist es ein Vokal?
-Implementieren Sie die Funktion, die „true“ zurückgeben soll, wenn das angegebene Objekt ein Vokal ist (also a, e, i, o, u, Groß- oder Kleinbuchstabe), und andernfalls „false“.
+8 lvl. Neues Element hinzufügen (Sammlungen werden per Referenz übergeben)
+Ein Element zur Liste hinzufügen:
 
-Reguläre AusdrückeGrundlagen
+Die Methode AddExtra fügt ein neues Element zur Liste hinzu und gibt die Liste zurück. Das neue Element kann ein beliebiges Objekt sein, das spielt keine Rolle. (Nehmen wir an, Sie fügen einen ganzzahligen Wert hinzu, z. B. 13)
+
+In unserem Testfall prüfen wir, ob die zurückgegebene Liste ein Element mehr enthält als die Eingabeliste. Die Methode muss jedoch etwas geändert werden, um diesen Test zu bestehen.
+
+P.S. Sie müssen eine neue Liste erstellen und dieser ein neues Element hinzufügen. (Dieses Kata wurde ursprünglich für die Sprache C# entwickelt und zeigt, dass das Hinzufügen eines neuen Elements zur Eingabeliste nicht funktioniert, obwohl der Parameter per Wert übergeben wird, der Wert jedoch auf die Referenz der Liste verweist und jede Änderung des Parameters vom Anrufer gesehen wird)
+
+Grundlagen
 */
 
-
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-namespace Task13
+
+namespace Task19
 {
-    class Task13
+    class Task19
     {
 
-        public static void Task_13()
+        public static void Task_19()
         {
-
-            Console.WriteLine(Vowel("Niks")); // false;
-            Console.WriteLine(Vowel("")); //  false
-            Console.WriteLine(Vowel("e")); //  true
-            Console.WriteLine(Vowel("E")); //  true
+            System.Console.WriteLine(AddExtra([])); //[5]
         }
 
 
-        public static bool Vowel(string s)
+
+        public static List<int> AddExtra(List<int> listOfNumbers)
         {
-            if (s.Length > 1) return false;
-            return Regex.IsMatch(s.ToLower(), "[aeiou]");
+            listOfNumbers.Add(1);
+
+            return listOfNumbers;
         }
     }
 }

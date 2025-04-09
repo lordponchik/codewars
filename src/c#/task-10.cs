@@ -1,48 +1,46 @@
 ﻿/*
-7 lvl. Find all occurrences of an element in an array
-Alle Vorkommen eines Elements in einem Array finden
-Gegeben sei ein Array (eine Liste in Python) mit Ganzzahlen und eine Ganzzahl n. Alle Vorkommen von n im gegebenen Array finden und ein anderes Array zurückgeben, das alle Indexpositionen von n im gegebenen Array enthält.
+7 lvl. Wort in Zeichenfolge multiplizieren
+Sie sollen eine Funktion schreiben, die als ersten Parameter eine Zeichenfolge verwendet. Diese Zeichenfolge ist eine Zeichenfolge aus Wörtern.
 
-Wenn n nicht im gegebenen Array enthalten ist, ein leeres Array zurückgeben [].
+Sie sollen dann den zweiten Parameter, der eine Ganzzahl ist, verwenden, um das entsprechende Wort in der angegebenen Zeichenfolge zu finden. Das erste Wort wird durch 0 dargestellt.
 
-Gehen Sie davon aus, dass n und alle Werte im gegebenen Array immer Ganzzahlen sind.
+Sobald Sie die gefundene Zeichenfolge haben, multiplizieren Sie schließlich den dritten bereitgestellten Parameter, der ebenfalls eine Ganzzahl ist. Sie müssen zusätzlich zwischen jedem Wort einen Bindestrich einfügen.
 
-Beispiel:
+Beispiel
 
-Kata.FindAll(new int[] {6, 9, 3, 4, 3, 82, 11}, 3) => new int[] {2, 4}
-Grundlagen
+modifyMultiply („Dies ist eine Zeichenfolge“, 3, 5)
+ZeichenfolgenAlgorithmenGrundlagenArrays
 */
 
-
+using System.Linq;
 using System.Collections.Generic;
-namespace Task10
+
+namespace Task16
 {
-    class Task10
+    class Task16
     {
 
-        public static void Task_10()
+        public static void Task_16()
         {
-
-            Console.WriteLine(FindAll([6, 9, 3, 4, 3, 82, 11], 3)); // {2, 4}
-            Console.WriteLine(FindAll([6, 9, 3, 4, 3, 82, 11], 0)); // {}
-
+            System.Console.WriteLine(ModifyMultiply("is very easy to resolve that kata", 0, 3)); //is-is-is
+            System.Console.WriteLine(ModifyMultiply("Talk is cheap Show me the code", 2, 4)); //cheap-cheap-cheap
         }
 
-        public static int[] FindAll(int[] array, int n)
+
+
+        public static string ModifyMultiply(string str, int loc, int num)
         {
-            List<int> newArr = [];
+            string suchbegriff = str.Split(" ")[loc];
+            List<string> massiv = [];
 
-            for (int i = 0; i < array.Length; i += 1)
+            for (int i = 0; i < num; i++)
             {
-                if (array[i] == n) newArr.Add(i);
+                massiv.Add(suchbegriff);
             }
 
-            foreach (var item in newArr)
-            {
-                System.Console.WriteLine(item);
-            }
-            return newArr.ToArray();
+            return string.Join("-", massiv);
         }
     }
-
 }
+
+

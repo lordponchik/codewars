@@ -1,36 +1,57 @@
 ﻿/*
-8 lvl. Neues Element hinzufügen (Sammlungen werden per Referenz übergeben)
-Ein Element zur Liste hinzufügen:
+7 lvl. Eindeutige Summe
+Bei einer Liste ganzer Werte besteht Ihre Aufgabe darin, die Summe der Werte zurückzugeben. Kommt derselbe ganzzahlige Wert jedoch mehrfach in der Liste vor, kann er nur einmal in der Summe berücksichtigt werden.
 
-Die Methode AddExtra fügt ein neues Element zur Liste hinzu und gibt die Liste zurück. Das neue Element kann ein beliebiges Objekt sein, das spielt keine Rolle. (Nehmen wir an, Sie fügen einen ganzzahligen Wert hinzu, z. B. 13)
+Beispiel:
 
-In unserem Testfall prüfen wir, ob die zurückgegebene Liste ein Element mehr enthält als die Eingabeliste. Die Methode muss jedoch etwas geändert werden, um diesen Test zu bestehen.
+Kata.UniqueSum(new List<int> {1, 2, 3}) => 6
 
-P.S. Sie müssen eine neue Liste erstellen und dieser ein neues Element hinzufügen. (Dieses Kata wurde ursprünglich für die Sprache C# entwickelt und zeigt, dass das Hinzufügen eines neuen Elements zur Eingabeliste nicht funktioniert, obwohl der Parameter per Wert übergeben wird, der Wert jedoch auf die Referenz der Liste verweist und jede Änderung des Parameters vom Anrufer gesehen wird)
+Kata.UniqueSum(new List<int> {1, 3, 8, 1, 8}) => 12
 
-Grundlagen
+Kata.UniqueSum(new List<int> {-1, -1, 5, 2, -7}) => -1
+
+Kata.UniqueSum(new List<int>()) => null
+Viel Erfolg!
+
+ListenLogikFilternGrundlagen
 */
 
+using System;
 using System.Collections.Generic;
 
-namespace Task19
+namespace Task25
 {
-    class Task19
+    class Task25
     {
 
-        public static void Task_19()
+        public static void Task_25()
         {
-            System.Console.WriteLine(AddExtra([])); //[5]
+
+            System.Console.WriteLine(UniqueSum([1, 2, 3])); //6
+            System.Console.WriteLine(UniqueSum([1, 3, 8, 1, 8])); //12
+            System.Console.WriteLine(UniqueSum([-1, -1, 5, 2, -7])); //-1
+            System.Console.WriteLine(UniqueSum([])); //null 
         }
 
 
-
-        public static List<int> AddExtra(List<int> listOfNumbers)
+        public static int? UniqueSum(List<int> lst)
         {
-            listOfNumbers.Add(1);
+            if (lst.Count == 0) return null;
 
-            return listOfNumbers;
+            int ergebnis = 0;
+
+            for (int i = 0; i < lst.Count; i += 1)
+            {
+                if (i != lst.IndexOf(lst[i]))
+                {
+                    continue;
+                }
+                ergebnis += lst[i];
+            }
+
+            return ergebnis;
         }
+
     }
 }
 

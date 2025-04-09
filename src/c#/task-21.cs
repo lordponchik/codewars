@@ -1,59 +1,37 @@
 ﻿/*
-7 lvl. Hells Kitchen
-Gordon Ramsay schreit. Er schreit und flucht. Vielleicht stimmt etwas nicht mit ihm.
+7 lvl. Originalpreis ermitteln
+Wir benötigen Code, um den Originalpreis eines Produkts zu ermitteln. Der Rückgabetyp muss Dezimal sein und die Zahl muss auf zwei Dezimalstellen gerundet sein.
 
-Du erhältst eine Reihe von vier Wörtern. Deine Aufgabe ist es, sie in die Sprache Gordons zu übersetzen.
+Wir erhalten den Verkaufspreis (Rabattpreis) und den Rabattprozentsatz. Unsere Aufgabe ist es, den Originalpreis zu ermitteln.
 
-Regeln:
+Beispiel:
+Bei einem Artikel zum Verkaufspreis von 75 $ nach Abzug von 25 % Rabatt soll die Funktion den Originalpreis dieses Artikels vor Abzug des Rabattprozentsatzes (100,00 $) zurückgeben, natürlich gerundet auf zwei Dezimalstellen.
 
-Natürlich sollten die Wörter großgeschrieben werden. Jedes Wort endet mit „!!!!“. Jeder Buchstabe „a“ oder „A“ wird zu „@“, jeder andere Vokal zu „*“.
+DiscoverOriginalPrice(75, 25) => 100.00M, wobei 75 der Verkaufspreis (Rabattpreis), 25 der Rabattprozentsatz und 100 der Originalpreis ist.
 
-Grundlagen: Strings & Arrays
+Grundlagen der Mathematik
 */
 
+using System;
 using System.Collections.Generic;
 
-namespace Task21
+namespace Task27
 {
-    class Task21
+    class Task27
     {
 
-        public static void Task_21()
+        public static void Task_27()
         {
-            System.Console.WriteLine(Gordon("What feck damn cake")); //"WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!"
-            System.Console.WriteLine(Gordon("are you stu pid")); //"@R*!!!! Y**!!!! ST*!!!! P*D!!!!"
-            System.Console.WriteLine(Gordon("i am a chef")); //"*!!!! @M!!!! @!!!! CH*F!!!!"
+            System.Console.WriteLine(DiscoverOriginalPrice(75M, 25M)); //100,00M
+            System.Console.WriteLine(DiscoverOriginalPrice(16M, 45M)); //29,09M
         }
 
 
-
-        public static string Gordon(string a)
+        public static decimal DiscoverOriginalPrice(decimal discountedPrice, decimal salePercentage)
         {
-            char[] vokale = ['A', 'E', 'I', 'O', 'U'];
-            string[] arr = a.Split(" ");
-
-            for (int i = 0; i < arr.Length; i += 1)
-            {
-                arr[i] = string.Concat(arr[i].Select((el) =>
-                {
-                    el = char.ToUpper(el);
-
-                    if (Array.Exists(vokale, v => v == el))
-                    {
-                        if (el == 'A') return '@';
-
-                        return '*';
-                    }
-
-                    return el;
-                }));
-
-                arr[i] += "!!!!";
-            }
-
-
-            return string.Join(" ", arr);
+            return Math.Round(discountedPrice * 100 / (100 - salePercentage), 2);
         }
+
     }
 }
 

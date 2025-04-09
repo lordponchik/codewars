@@ -1,48 +1,34 @@
 ﻿/*
-7 lvl. Anzahl der Vorkommen
-Schreiben Sie eine Funktion, die die Anzahl der Vorkommen eines Elements in einem Array zurückgibt.
+7 lvl. Regexp-Grundlagen – ist es ein Vokal?
+Implementieren Sie die Funktion, die „true“ zurückgeben soll, wenn das angegebene Objekt ein Vokal ist (also a, e, i, o, u, Groß- oder Kleinbuchstabe), und andernfalls „false“.
 
-Beispiele
-var sample = { 1, 0, 2, 2, 3 };
-NumberOfOccurrences(0, sample) == 1;
-NumberOfOccurrences(4, sample) == 0;
-NumberOfOccurrences(2, sample) == 2;
-NumberOfOccurrences(3, sample) == 1;
-ArraysFundamentals
+Reguläre AusdrückeGrundlagen
 */
 
 
-namespace Task7
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+namespace Task13
 {
-    class Task7
+    class Task13
     {
 
-        public static void Task_7()
+        public static void Task_13()
         {
 
-            Console.WriteLine(NumberOfOccurrences(0, [1, 0, 2, 2, 3]));
-            Console.WriteLine(NumberOfOccurrences(4, [1, 0, 2, 2, 3]));
-            Console.WriteLine(NumberOfOccurrences(2, [1, 0, 2, 2, 3]));
-            Console.WriteLine(NumberOfOccurrences(3, [1, 0, 2, 2, 3]));
-
+            Console.WriteLine(Vowel("Niks")); // false;
+            Console.WriteLine(Vowel("")); //  false
+            Console.WriteLine(Vowel("e")); //  true
+            Console.WriteLine(Vowel("E")); //  true
         }
 
 
-
-
-
-        public static int NumberOfOccurrences(int x, int[] xs)
+        public static bool Vowel(string s)
         {
-            int anzahl = 0;
-
-            foreach (int el in xs)
-            {
-                if (el == x) anzahl += 1;
-            }
-
-            return anzahl;
+            if (s.Length > 1) return false;
+            return Regex.IsMatch(s.ToLower(), "[aeiou]");
         }
-
-
     }
 }
+
+
